@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
+using static System.Math;
+
+delegate void Calculate(double d);
 
 namespace testCode
 {
@@ -27,6 +30,14 @@ namespace testCode
         //}
 
         #endregion
+        
+        static void TestMethod1(double d) {
+            WriteLine($"result is {d*d}");
+        }
+        static void TestMethod2(double d)
+        {
+            WriteLine($"result is {Sqrt(d)}");
+        }
 
         static void Main()
         {
@@ -51,7 +62,17 @@ namespace testCode
             WriteLine($"Country : {labelCountry3}");
             WriteLine("----------------------------");
             Foo();
+            WriteLine("----------------------------");
+            Program ts = new Program();
+            Calculate s1 = Program.TestMethod1;
+            Calculate s2 = Program.TestMethod2;
+            Calculate calc = s1;
+            calc += s2;
+            calc(2);
+
             _ = ReadLine();
+
+
 
         }
     }
